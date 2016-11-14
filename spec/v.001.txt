@@ -12,9 +12,9 @@
 
 
 ПО
-	JDK 1.7 and greater(version >= 1.7)
-	MySQL
-	Apache
-	Maven (v. => 2.0)
+	JDK 1.7 and greater(version >= 1.7). Рекомендую v. 8 (== v. 1.8)
+	MySQL. (v. >= 5)
+	Apache Tomcat. Рекомендую v. 8
+	Maven (v. => 3.0).
 	GIT
 	IDEA / Eclipse
