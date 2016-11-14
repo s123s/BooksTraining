@@ -6,19 +6,21 @@ Codepage UTF8
 
 \BooksTraining - Корневая папка
 
-\Spec - каталог с ТЗ и требованиями к версиям.
+\spec - каталог с ТЗ и требованиями к версиям.
 	spec.txt - начальное ТЗ
 	v.001.txt - ТЗ для версии 001
 	v.002.txt - ТЗ для версии 002
 	...
 
+
+
 Структура проекта (v.001)
-\spec\v001 		   - корневая папка для версии 001
-\spec\v001\src 		   - исходники
-\spec\v001\src\main\java   - исходники (.java)
-\spec\v001\src\main\test   - тесты (.java)
-\spec\v001\src\main\webapp - папка для Frontend
-\spec\v001\target	   - скомпилированные файлы (.jar, .war, .class)
+\BooksTraining\v001\    - корневая папка для версии 001
+\v001\src 		- исходники
+\v001\src\main\java   - исходники (.java)
+\v001\src\main\test   - тесты (.java)
+\v001\src\main\webapp - папка для Frontend
+\v001\target	   - скомпилированные файлы (.jar, .war, .class)
 
 pom.xml	- центральный файл проекта(Maven) версии 001
 
