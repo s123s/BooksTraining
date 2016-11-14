@@ -17,8 +17,8 @@ Codepage UTF8
 \spec\v001\src 		   - исходники
 \spec\v001\src\main\java   - исходники (.java)
 \spec\v001\src\main\test   - тесты (.java)
-\spec\v001\target	   - скомпилированные файлы (.jar, .war, .class)
 \spec\v001\src\main\webapp - папка для Frontend
+\spec\v001\target	   - скомпилированные файлы (.jar, .war, .class)
 
 pom.xml	- центральный файл проекта(Maven) версии 001
 
