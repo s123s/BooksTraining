@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" name="BooksTraining:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/BooksTraining_war_exploded</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="BooksTraining/web/Web" />
-    </root>
-  </artifact>
-</component>
