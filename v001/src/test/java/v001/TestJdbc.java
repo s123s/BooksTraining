@@ -9,8 +9,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import v001.model.Autor;
+import v001.model.Book;
+import v001.model.MyQueryFactory;
 import static org.junit.Assert.*;
-
 
 public class TestJdbc {
 	@Test
@@ -41,19 +43,33 @@ public class TestJdbc {
 	}
 
 	@Test
-	public void testFactory() {
-/*		 try {
-			Class.forName(MyQueryFactory.class.getName());
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-*/		try (MyQueryFactory instance = new MyQueryFactory()) {
+	public void testBooks() {
+		/*
+		 * try { Class.forName(MyQueryFactory.class.getName()); } catch
+		 * (ClassNotFoundException e1) { // TODO Auto-generated catch block
+		 * e1.printStackTrace(); }
+		 */try (MyQueryFactory instance = new MyQueryFactory()) {
 			instance.initConnection();
-			
+
 			ArrayList<Book> books = instance.returnBooksArrayList();
 			for (Book book : books) {
 				System.out.println(book);
+			}
+
+		} catch (Exception e) {
+			assertNull(e);
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testAutors() {
+		try (MyQueryFactory instance = new MyQueryFactory()) {
+			instance.initConnection();
+
+			ArrayList<Autor> autors = instance.returnAutorsArrayList();
+			for (Autor autor : autors) {
+				System.out.println(autor);
 			}
 
 		} catch (Exception e) {

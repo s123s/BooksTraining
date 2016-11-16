@@ -1,4 +1,4 @@
-package v001;
+package v001.model;
 
 public class Book {
 	public Book(Integer id, String name, String isdn, Integer autor_id) {
