@@ -34,11 +34,11 @@ public class TestJdbc {
 			}
 
 		} catch (SQLException ex) {
-			assertNull(ex);
 			// handle any errors
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
+			assertNull(ex);
 		}
 	}
 
@@ -57,8 +57,8 @@ public class TestJdbc {
 			}
 
 		} catch (Exception e) {
-			assertNull(e);
 			e.printStackTrace();
+			assertNull(e);
 		}
 	}
 
@@ -74,8 +74,8 @@ public class TestJdbc {
 			}
 
 		} catch (Exception e) {
-			assertNull(e);
 			e.printStackTrace();
+			assertNull(e);
 		}
 	}
 }

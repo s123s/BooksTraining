@@ -37,15 +37,19 @@ public class MyQueryFactory implements Closeable {
 
 		ArrayList<Book> books = new ArrayList<Book>();
 
-		Statement st = conn.createStatement();
-		st.execute("select * from book where deleted <> 1");
-		ResultSet rSet = st.getResultSet();
+		try (PreparedStatement st = conn
+				.prepareStatement("select * from book where deleted <> 1");
+				ResultSet rSet = st.executeQuery();) {
 
-		while (rSet.next()) {
-			Book b = new Book(rSet.getInt("id"), rSet.getString("name"),
-					rSet.getString("isdn"), rSet.getInt("autor_id"));
-			books.add(b);
+			while (rSet.next()) {
+				Book b = new Book(rSet.getInt("id"), rSet.getString("name"),
+						rSet.getString("isdn"), rSet.getInt("autor_id"));
+				books.add(b);
+			}
+		} catch (SQLException e) {
+			throw new SQLException(e);
 		}
+
 		return books;
 	}
 
@@ -53,21 +57,26 @@ public class MyQueryFactory implements Closeable {
 
 		ArrayList<Autor> autors = new ArrayList<Autor>();
 
-		Statement st = conn.createStatement();
-		st.execute("select * from autor");
-		ResultSet rSet = st.getResultSet();
+		try (PreparedStatement st = conn
+				.prepareStatement("select * from autor");
+				ResultSet rSet = st.executeQuery();) {
 
-		while (rSet.next()) {
-			Autor a = new Autor(rSet.getInt("id"), rSet.getString("name"));
-			autors.add(a);
+			while (rSet.next()) {
+				Autor a = new Autor(rSet.getInt("id"), rSet.getString("name"));
+				autors.add(a);
+			}
+		} catch (SQLException e) {
+			throw new SQLException(e);
 		}
 		return autors;
 	}
 
 	public boolean markBookDeleted(Integer idBook) throws SQLException {
-
-		Statement st = conn.createStatement();
-		return st.execute("update book set  deleted=1 where id = " + idBook);
+		try (Statement st = conn.createStatement()) {
+			return st .execute("update book set  deleted=1 where id = " + idBook);
+		} catch (SQLException e) {
+			throw new SQLException(e);
+		}
 	}
 
 	public Book returnBook(Integer id) throws Exception {
