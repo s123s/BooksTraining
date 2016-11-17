@@ -13,6 +13,7 @@ public class Book {
     static final String PASSWORD = "root";
     Connection connection = null;
     Statement statement = null;
+    PreparedStatement prepStat = null;
 
     int idBook;
     String bookName;
@@ -24,8 +25,9 @@ public class Book {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Book book = new Book();
-        book.addBook("test","12345",2);
-        book.deleteBook(4);
+        book.addBook("prep","stat",1);
+        book.updateBook(9, "testupd","999",1 );
+        book.deleteBook(5);
         book.selectBook();
         book.selectAutor();
 
@@ -53,6 +55,9 @@ public class Book {
 
 
         }
+        resultSet.close();
+        connection.close();
+        statement.close();
     }
 
     public void selectAutor() throws ClassNotFoundException, SQLException {
@@ -67,24 +72,50 @@ public class Book {
             autor = resultSet2.getString("name");
             System.out.print(idAutor + " " + autor);
         }
+        resultSet2.close();
+        connection.close();
+        statement.close();
     }
     public void deleteBook(int idDel) throws ClassNotFoundException, SQLException {
         Class.forName(JDBC_DRIVER);
         connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
-        statement = connection.createStatement();
-        String sqldel = "DELETE FROM book.book WHERE id=" + idDel;
-        statement.executeUpdate(sqldel);
+
+        prepStat = connection.prepareStatement("DELETE FROM book.book WHERE id= ?");
+        prepStat.setInt(1, idDel);
+        prepStat.executeUpdate();
+
+        connection.close();
+        prepStat.close();
     }
 
     public void addBook(String bookN, String kod, int autId) throws ClassNotFoundException, SQLException {
         Class.forName(JDBC_DRIVER);
         connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
-        statement = connection.createStatement();
-        String sqlAdd = "INSERT INTO `book`.`book` (`name`, `isdn`, `autor_id`) VALUES ('bookN', 'kod', '1')";
-        statement.executeUpdate(sqlAdd);
+
+        prepStat = connection.prepareStatement("INSERT INTO book.book (`name`, `isdn`, `autor_id`) VALUES (?, ?, ?)");
+        prepStat.setString(1, bookN);
+        prepStat.setString(2, kod);
+        prepStat.setInt(3, autId);
+        prepStat.executeUpdate();
+
+        connection.close();
+        prepStat.close();
     }
 
-    public void updateBook(){}
+    public void updateBook(int id, String bookN, String kod, int autId)throws ClassNotFoundException, SQLException{
+        Class.forName(JDBC_DRIVER);
+        connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+
+        prepStat = connection.prepareStatement("UPDATE book.book SET name = ?, isdn = ?, autor_id = ? WHERE id = ?");
+        prepStat.setString(1, bookN);
+        prepStat.setString(2, kod);
+        prepStat.setInt(3, autId);
+        prepStat.setInt(4, id);
+        prepStat.executeUpdate();
+
+        connection.close();
+        prepStat.close();
+    }
     }
 
 
