@@ -4,4 +4,25 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+      <filter>
+        <filter-name>mainFilter</filter-name>
+        <filter-class>v001.controller.MainFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>mainFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+    
+    
+  <servlet>
+  	<servlet-name>BookOperation</servlet-name>
+  	<display-name>BookOperation</display-name>
+  	<description></description>
+  	<servlet-class>v001.controller.BookOperation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BookOperation</servlet-name>
+  	<url-pattern>/BookOperation</url-pattern>
+  </servlet-mapping>
 </web-app>
