@@ -28,7 +28,7 @@
 				ArrayList<Book> books = myQueryFactory.returnBooksArrayList();
 				for (Book book : books) {
 			%>
-			<li><input type="checkbox" name="checked"
+			<li><input type="checkbox" name="checked_id"
 				VALUE=<%out.print(book.id);%>> <%
  	out.print(""+book.name+", "+book.isdn);
  %></li>

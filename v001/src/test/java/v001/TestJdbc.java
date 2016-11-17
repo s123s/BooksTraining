@@ -21,7 +21,7 @@ public class TestJdbc {
 		Connection conn = null;
 		try {
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/book?useSSL=false&"
+					.getConnection("jdbc:mysql://localhost/book?useSSL=false&useUnicode=true&characterEncoding=UTF-8&"
 							+ "user=stas&password=qwn19c");
 
 			Statement st = conn.createStatement();
@@ -62,6 +62,7 @@ public class TestJdbc {
 		}
 	}
 
+	
 	@Test
 	public void testAutors() {
 		try (MyQueryFactory instance = new MyQueryFactory()) {
