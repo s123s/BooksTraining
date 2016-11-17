@@ -24,17 +24,17 @@ public class Book {
 
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Book book = new Book();
+       /* Book book = new Book();
         book.addBook("prep","stat",1);
         book.updateBook(9, "testupd","999",1 );
         book.deleteBook(5);
         book.selectBook();
         book.selectAutor();
 
-
+*/
     }
 
-    public void selectBook() throws ClassNotFoundException, SQLException {
+    public ResultSet selectBook() throws ClassNotFoundException, SQLException {
 
         Class.forName(JDBC_DRIVER);
         connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
@@ -42,7 +42,7 @@ public class Book {
         sql = "SELECT * FROM book.book";
 
         ResultSet resultSet = statement.executeQuery(sql);
-        while (resultSet.next()) {
+     /*   while (resultSet.next()) {
             idBook = resultSet.getInt("id");
             bookName = resultSet.getString("name");
             isdn = resultSet.getString("isdn");
@@ -55,9 +55,11 @@ public class Book {
 
 
         }
-        resultSet.close();
-        connection.close();
-        statement.close();
+        */
+
+        /*connection.close();
+        statement.close();*/
+        return resultSet;
     }
 
     public void selectAutor() throws ClassNotFoundException, SQLException {
