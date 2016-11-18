@@ -4,10 +4,10 @@ package v001;
  * Created by yasha on 18.11.2016.
  */
 public class Book  {
-    int idBook;
-    String bookName;
-    String isdn;
-    int idAutor;
+    private int idBook;
+    private String bookName;
+    private String isdn;
+    private int idAutor;
     public Book(int idBook, String bookName,String isdn, int idAutor){
         this.idBook = idBook;
         this.bookName = bookName;

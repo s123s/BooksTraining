@@ -17,9 +17,10 @@
 <head>
     <title>Book</title>
 </head>
-<body><form action="">
-<button>AddBook</button>
-<button onclick="">Delete</button>
+<form action="addBook.jsp">
+<button>AddBook</button></form>
+<form action=""><button>DeleteBook</button></form>
+
 <h2 align="center">Books List</h2>
 <table border="1" width="100%">
     <tr>
@@ -33,11 +34,11 @@
 
     <% for (Book book :bookList) {%>
     <tr>
-    <td align="center"><input type="checkbox" onclick="alert(12);" name="<%=book.getIdBook()%>"></td>
+    <td align="center"><input type="checkbox" onclick="alert(12);"value="<%=book.getIdBook()%>"></td>
     <td align="center"><%=book.getIdBook()%></td>
     <td align="center"><%=book.getBookName()%></td>
     <td align="center"><%=book.getIsdn()%></td>
-    <td align="center"><%=book.getIdAutor()%></td>
+    <td align="center"><%=serviceBook.selectAutor(book.getIdAutor())%></td>
     </tr>
    <% }%>
 
