@@ -6,37 +6,42 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import ="v001.Book"%>
+<%@ page import ="v001.ServiceBook"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="v001.Book" %>
+<%
+    ServiceBook serviceBook = new ServiceBook();
+    ArrayList<Book> bookList = serviceBook.selectBook();%>
 <html>
 <head>
     <title>Book</title>
 </head>
-<body>
+<body><form action="">
 <button>AddBook</button>
-<button>Delete</button>
+<button onclick="">Delete</button>
 <h2 align="center">Books List</h2>
 <table border="1" width="100%">
     <tr>
-        <td align="center"><b >ChkBox</b></td>
-        <td align="center"><b >ID</b></td>
+        <td align="center"><b>ChkBox</b></td>
+        <td align="center"><b>ID</b></td>
         <td align="center"><b>Book Name</b></td>
         <td align="center"><b>ISDN</b></td>
         <td align="center"><b>AutorId</b></td>
     </tr>
-    <%Book book = new Book();
-      ResultSet rst = book.selectBook();%>
 
-    <% while (rst.next()) {%>
+
+    <% for (Book book :bookList) {%>
     <tr>
-    <td align="center"><input type="checkbox"></td>
-    <td align="center"><%=rst.getInt("id")%></td>
-    <td align="center"><%=rst.getString("name")%></td>
-    <td align="center"><%=rst.getString("isdn")%></td>
-    <td align="center"><%=rst.getInt("autor_id")%></td>
+    <td align="center"><input type="checkbox" onclick="alert(12);" name="<%=book.getIdBook()%>"></td>
+    <td align="center"><%=book.getIdBook()%></td>
+    <td align="center"><%=book.getBookName()%></td>
+    <td align="center"><%=book.getIsdn()%></td>
+    <td align="center"><%=book.getIdAutor()%></td>
     </tr>
    <% }%>
 
     </table>
+</form>
 </body>
 </html>
