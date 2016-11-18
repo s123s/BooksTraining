@@ -1,4 +1,4 @@
-package v001;
+package v002;
 
 public class FirstClass {
 public static void main(String[] args) {
