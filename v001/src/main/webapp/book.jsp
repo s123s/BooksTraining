@@ -28,10 +28,15 @@
 <head>
     <title>Book</title>
 </head>
+<body>
+
 <form action="addBook.jsp">
 <button>AddBook</button></form>
+<form action="editBook.jsp">
+    <button>EditBook</button></form>
+<form action="book.jsp" method="GET">
 
-<form action="book.jsp" method="GET"><input type="submit" name="delete" value="Delete_book"/>
+<input type="submit" name="delete" value="Delete_book"/>
 
 
 <h2 align="center">Books List</h2>
@@ -54,7 +59,7 @@
     </tr>
    <% }%>
 
-    <%%>
+
     <% if(request.getParameter("delete")!= null){
         for(Book book : bookList){
             if(request.getParameter((Integer.toString(book.getIdBook())))!= null)
@@ -65,6 +70,7 @@
     %>
     </table>
 
-    </form>
+
+</form>
 </body>
 </html>
