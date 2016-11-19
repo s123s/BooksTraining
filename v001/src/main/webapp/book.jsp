@@ -10,16 +10,29 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="v001.Book" %>
+<%@ page import="java.util.*" import="java.io.*"%>
+
 <%
     ServiceBook serviceBook = new ServiceBook();
-    ArrayList<Book> bookList = serviceBook.selectBook();%>
+    ArrayList<Book> bookList = serviceBook.selectBook();
+    int idDelete= -1;%>
+<% if(request.getParameter("addBook")!=null){
+    serviceBook.addBook(request.getParameter("BookName"), request.getParameter("ISDN"), Integer.parseInt(request.getParameter("autor")));
+}
+%>
+
+
+
+
 <html>
 <head>
     <title>Book</title>
 </head>
 <form action="addBook.jsp">
 <button>AddBook</button></form>
-<form action=""><button>DeleteBook</button></form>
+
+<form action="book.jsp" method="GET"><input type="submit" name="delete" value="Delete_book"/>
+
 
 <h2 align="center">Books List</h2>
 <table border="1" width="100%">
@@ -31,10 +44,9 @@
         <td align="center"><b>AutorId</b></td>
     </tr>
 
-
-    <% for (Book book :bookList) {%>
+    <% for (Book book : bookList) {%>
     <tr>
-    <td align="center"><input type="checkbox" onclick="alert(12);"value="<%=book.getIdBook()%>"></td>
+    <td align="center"><input type="checkbox" name="<%=book.getIdBook()%>" value="<%=book.getIdBook()%>"></td>
     <td align="center"><%=book.getIdBook()%></td>
     <td align="center"><%=book.getBookName()%></td>
     <td align="center"><%=book.getIsdn()%></td>
@@ -42,7 +54,17 @@
     </tr>
    <% }%>
 
+    <%%>
+    <% if(request.getParameter("delete")!= null){
+        for(Book book : bookList){
+            if(request.getParameter((Integer.toString(book.getIdBook())))!= null)
+            {idDelete = book.getIdBook();}
+        }
+        serviceBook.deleteBook(idDelete);
+    }
+    %>
     </table>
-</form>
+
+    </form>
 </body>
 </html>

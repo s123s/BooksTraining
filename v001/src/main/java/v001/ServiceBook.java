@@ -18,13 +18,15 @@ public class ServiceBook {
     String sql;
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-       /* ServiceBook book = new ServiceBook();
+       ServiceBook book = new ServiceBook();
+       /*
         book.addBook("prep","stat",1);
         book.updateBook(9, "testupd","999",1 );
         book.deleteBook(5);
         book.selectBook();
         book.selectAutor();
 */
+        System.out.println("" + book.selectAutorId(book.selectAutor(3)));
     }
 
     public ArrayList<Book> selectBook() throws ClassNotFoundException, SQLException {
@@ -85,6 +87,27 @@ public class ServiceBook {
         statement.close();
         connection.close();
         return name;
+    }
+    public int selectAutorId(String name) throws ClassNotFoundException, SQLException {
+        Class.forName(JDBC_DRIVER);
+        connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        statement = connection.createStatement();
+        String sql2 = "SELECT * FROM book.autor";
+        int id = -1;
+        ResultSet resultSet2 = statement.executeQuery(sql2);
+        while (id == -1 && resultSet2.next()) {
+             String name1 = resultSet2.getString("name");
+            if(name1.equals(name)){
+                id = resultSet2.getInt("id");}
+
+        }
+
+
+
+        resultSet2.close();
+        statement.close();
+        connection.close();
+        return id;
     }
     public void deleteBook(int idDel) throws ClassNotFoundException, SQLException {
         Class.forName(JDBC_DRIVER);
