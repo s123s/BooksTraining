@@ -15,7 +15,15 @@
 <%
     ServiceBook serviceBook = new ServiceBook();
     ArrayList<Book> bookList = serviceBook.selectBook();
-    int idDelete= -1;%>
+    int idDelete= -1;
+ if(request.getParameter("delete")!= null){
+    for(Book book : bookList){
+        if(request.getParameter((Integer.toString(book.getIdBook())))!= null)
+        {idDelete = book.getIdBook();}
+    }
+    serviceBook.deleteBook(idDelete);
+}
+%>
 <% if(request.getParameter("addBook")!=null){
     serviceBook.addBook(request.getParameter("BookName"), request.getParameter("ISDN"), Integer.parseInt(request.getParameter("autor")));
 }
@@ -49,7 +57,8 @@
         <td align="center"><b>AutorId</b></td>
     </tr>
 
-    <% for (Book book : bookList) {%>
+    <%  ArrayList<Book> bookList1 = serviceBook.selectBook();
+        for (Book book : bookList1) {%>
     <tr>
     <td align="center"><input type="checkbox" name="<%=book.getIdBook()%>" value="<%=book.getIdBook()%>"></td>
     <td align="center"><%=book.getIdBook()%></td>
@@ -59,15 +68,6 @@
     </tr>
    <% }%>
 
-
-    <% if(request.getParameter("delete")!= null){
-        for(Book book : bookList){
-            if(request.getParameter((Integer.toString(book.getIdBook())))!= null)
-            {idDelete = book.getIdBook();}
-        }
-        serviceBook.deleteBook(idDelete);
-    }
-    %>
     </table>
 
 

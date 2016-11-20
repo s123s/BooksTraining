@@ -10,7 +10,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%ServiceBook serviceBook = new ServiceBook();
-    ArrayList<String> list = serviceBook.listAutor();%>
+
+ if(request.getParameter("addAutor")!=null){
+    serviceBook.addAutor(request.getParameter("Autor"));
+}
+%>
+<%
+ArrayList<String> list = serviceBook.listAutor();
+%>
 <html>
 <head>
     <title>addBook</title>
