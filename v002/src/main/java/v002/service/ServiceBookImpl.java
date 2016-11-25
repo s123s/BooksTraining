@@ -1,5 +1,6 @@
 package v002.service;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import v002.domain.Book;
 import v002.repository.BookReposImpl;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by yasha on 21.11.2016.
  */
+@Service
 public class ServiceBookImpl implements ServiceBook{
 
     private BookReposImpl bookReposImpl;

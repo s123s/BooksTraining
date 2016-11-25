@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by yasha on 23.11.2016.
  */
+@Service
 public class ServiceAutorImpl implements ServiceAutor {
     private AutorReposImpl autorReposImpl;
 
