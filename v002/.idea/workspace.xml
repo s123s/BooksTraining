@@ -7,14 +7,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_0_Final.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_4_RELEASE.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_3_4_RELEASE.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/v002_Web_exploded.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/v002/Controller/ControllerBook.java" afterPath="$PROJECT_DIR$/src/main/java/v002/Controller/ControllerBook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/v002/service/ServiceBookImpl.java" afterPath="$PROJECT_DIR$/src/main/java/v002/service/ServiceBookImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/v002.iml" afterPath="$PROJECT_DIR$/v002.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/spring-servlet.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/spring-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/books.jsp" afterPath="$PROJECT_DIR$/web/books.jsp" />
     </list>
     <ignored path="v002.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -789,7 +782,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1479725317881</updated>
-      <workItem from="1479725325647" duration="45931000" />
+      <workItem from="1479725325647" duration="45958000" />
     </task>
     <task id="LOCAL-00001" summary="1 commit">
       <created>1479757505211</created>
@@ -826,11 +819,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480105379632</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="nifiga ne rabotaet">
+      <created>1480444816933</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1480444816933</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45931000" />
+    <option name="totallyTimeSpent" value="45958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
