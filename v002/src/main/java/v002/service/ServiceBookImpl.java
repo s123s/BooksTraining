@@ -14,6 +14,7 @@ import java.util.List;
 public class ServiceBookImpl implements ServiceBook{
 
     private BookReposImpl bookReposImpl;
+    private BookReposImpl bookService;
 
     public void setBookReposImpl(BookReposImpl bookReposImpl){
         this.bookReposImpl = bookReposImpl;
@@ -51,5 +52,9 @@ public class ServiceBookImpl implements ServiceBook{
     @Transactional
     public List<Book> listBooks() {
         return this.bookReposImpl.listBook();
+    }
+
+    public void setBookService(BookReposImpl bookService) {
+        this.bookService = bookService;
     }
 }

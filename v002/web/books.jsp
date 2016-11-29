@@ -21,19 +21,18 @@ Hello!!!
 
     <table border="1" width="100%">
     <tr>
-    <td align="center"><b>ChkBox</b></td>
     <td align="center"><b>ID</b></td>
     <td align="center"><b>Book Name</b></td>
     <td align="center"><b>ISDN</b></td>
     <td align="center"><b>AutorId</b></td>
     </tr>
-    <%--%><c:forEach items="${listBooks}" var="book">
+    <c:forEach items="${listBooks}" var="book">
         <tr>
             <td>${book.id}</td>
             <td>${book.name}</td>
             <td>${book.isdn}</td>
         </tr>
-        </c:forEach>--%>
+        </c:forEach>
         </table>
 <%--</c:if>--%>
 </body>

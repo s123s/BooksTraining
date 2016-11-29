@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import v002.domain.Book;
 import v002.service.ServiceBook;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by yasha on 21.11.2016.
@@ -16,8 +17,9 @@ import v002.service.ServiceBook;
 @Controller
 public class ControllerBook {
     private ServiceBook serviceBook;
+
 @Autowired
-//@Qualifier(value = "serviceBook")
+@Qualifier(value = "bookService")
     public void setServiceBook(ServiceBook serviceBook) {
         this.serviceBook = serviceBook;
     }
