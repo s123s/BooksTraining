@@ -9,5 +9,11 @@
 
 <body>
 	<h1>Message : ${message}</h1>
+	<%String myContextParam =
+	        request.getSession()
+            .getServletContext()
+            .getInitParameter("myParam");
+	response.getOutputStream().print("aaaa");
+  %>
 </body>
 </html>
