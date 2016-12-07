@@ -1,4 +1,4 @@
-package v002.model;
+package v002.service;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -9,16 +9,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
-import v002.POJO.Autor;
-import v002.POJO.Book;
+import org.springframework.stereotype.Service;
 
-public class MyQueryFactory implements Closeable {
+import v002.DAO.BookDAO;
+import v002.model.Autor;
+import v002.model.Book;
 
+@Service
+public class BookServiceImpl implements Closeable {
+
+	private BookDAO bookDao; 
+	
 	private static Connection conn = null;
 
 	public void initConnection() throws SQLException, ClassNotFoundException {
 
+		
+		
+		
+		
 		// Let's load library from "/web-inf/lib" direcory
 		//Class.forName("com.mysql.jdbc.Driver");
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -38,27 +49,11 @@ public class MyQueryFactory implements Closeable {
 		}
 	}
 
-	public ArrayList<Book> returnBooksArrayList() throws SQLException {
-
-		ArrayList<Book> books = new ArrayList<Book>();
-
-		try (PreparedStatement st = conn
-				.prepareStatement("select * from book where deleted <> 1");
-				ResultSet rSet = st.executeQuery();) {
-
-			while (rSet.next()) {
-				Book b = new Book(rSet.getInt("id"), rSet.getString("name"),
-						rSet.getString("isdn"), rSet.getInt("autor_id"));
-				books.add(b);
-			}
-		} catch (SQLException e) {
-			throw new SQLException(e);
-		}
-
-		return books;
+	public List<Book> getBooks() {
+		return bookDao.readAll();
 	}
 
-	public ArrayList<Autor> returnAutorsArrayList() throws SQLException {
+	public ArrayList<Autor> getAutors() throws SQLException {
 
 		ArrayList<Autor> autors = new ArrayList<Autor>();
 
@@ -84,7 +79,7 @@ public class MyQueryFactory implements Closeable {
 		}
 	}
 
-	public Book returnBook(Integer id) throws Exception {
+	public Book getBook(Integer id) throws Exception {
 
 		Statement st = conn.createStatement();
 		st.execute("select * from book where id = " + id);
@@ -105,7 +100,7 @@ public class MyQueryFactory implements Closeable {
 				.prepareStatement("update book set  name=?, isdn=?, autor_id=? where id = ?");
 		prepareStatement.setString(1, book.name);
 		prepareStatement.setString(2, book.isdn);
-		prepareStatement.setInt(3, book.autor_id);
+		prepareStatement.setInt(3, book.getAutorId());
 		prepareStatement.setInt(4, book.id);
 
 		return prepareStatement.executeUpdate();
@@ -118,8 +113,14 @@ public class MyQueryFactory implements Closeable {
 				.prepareStatement("insert into book (name, isdn, autor_id) values (?, ?, ?)");
 		prepareStatement.setString(1, book.name);
 		prepareStatement.setString(2, book.isdn);
-		prepareStatement.setInt(3, book.autor_id);
+		prepareStatement.setInt(3, book.getAutorId());
 
 		return prepareStatement.executeUpdate();
+	}
+
+	
+
+	public void setBookDao(BookDAO bookDao) {
+		this.bookDao = bookDao;
 	}
 }

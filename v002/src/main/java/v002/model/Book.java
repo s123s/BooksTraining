@@ -1,6 +1,12 @@
-package v002.POJO;
+package v002.model;
 
 public class Book {
+	
+	public Integer id;
+	public String name;
+	public String isdn;
+	private Integer autorId;
+	
 	public Book() {
 	};
 
@@ -8,17 +14,13 @@ public class Book {
 		this.id = id;
 		this.name = name;
 		this.isdn = isdn;
-		this.autor_id = autor_id;
+		this.autorId = autor_id;
 	}
 
 	public String toString() {
-		return "" + id + ", " + name + ", " + isdn + ", " + autor_id;
+		return "" + id + ", " + name + ", " + isdn + ", " + autorId;
 	};
-
-	public Integer id;
-	public String name;
-	public String isdn;
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -43,14 +45,12 @@ public class Book {
 		this.isdn = isdn;
 	}
 
-	public Integer getAutor_id() {
-		return autor_id;
+	public Integer getAutorId() {
+		return autorId;
 	}
 
-	public void setAutor_id(Integer autor_id) {
-		this.autor_id = autor_id;
+	public void setAutorId(Integer autorId) {
+		this.autorId = autorId;
 	}
-
-	public Integer autor_id;
 
 }

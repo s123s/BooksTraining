@@ -1,4 +1,4 @@
-package v002.POJO;
+package v002.model;
 
 public class Autor {
 	public Autor() {
