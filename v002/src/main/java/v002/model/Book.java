@@ -1,11 +1,30 @@
 package v002.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "book")
 public class Book {
 	
+	@Id
+	@Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer id;
-	public String name;
+	
+	
+	@Column(name = "name")
+    public String name;
+	
+	@Column(name = "isdn")
 	public String isdn;
-	private Integer autorId;
+	
+	@Column(name = "autor_id")
+    private Integer autorId;
 	
 	public Book() {
 	};
