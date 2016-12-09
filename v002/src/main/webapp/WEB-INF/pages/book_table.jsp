@@ -42,9 +42,6 @@
 </head>
 <body>
 
-	<%-- <jsp:useBean id="bookService" scope="session"
-		class="v002.service.BookServiceImpl" /> --%>
-
 	<FORM method="post" name="theForm" action="BookOperation">
 		<input type="hidden" name="func" id="func">
 
