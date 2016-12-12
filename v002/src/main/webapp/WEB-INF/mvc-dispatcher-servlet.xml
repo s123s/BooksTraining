@@ -14,10 +14,8 @@
 
 	<context:component-scan base-package="v002.controller" />
 
-	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
-	
-<!-- Getting Database properties -->
-<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- Getting Database properties -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -39,30 +37,41 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-    <!-- Hibernate SessionFactory Bean definition -->
-    <bean id="hibernate5AnnotatedSessionFactory"
-          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
-            <list>
-                <value>v002.model.Book</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-                </prop>
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-        </property>
-    </bean>
-    
-	<!--DAO and BookService beans -->
-	<bean id="bookService" class="v002.service.BookServiceImpl">
-		<property name="bookDao" ref="bookDao"/>
+	<!-- Hibernate SessionFactory Bean definition -->
+	<bean id="hibernate5AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>v002.model.Book</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
 	</bean>
-	<bean id="bookDao" class="v002.dao.mysqlimp.MysqlBookDao">
-		<property name="dataSource" ref="dataSource"/>
+
+	<!--DAO and BookService beans -->
+	<bean id="bookDao" class="v002.dao.hibernate.MysqlBookDaoHibernate">
+		<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
+	</bean>
+	<bean id="bookService" class="v002.service.BookServiceImpl">
+		<property name="bookDao" ref="bookDao" />
+	</bean>
+
+
+
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</bean>
 
 	<mvc:default-servlet-handler />

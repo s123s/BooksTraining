@@ -9,10 +9,10 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import v002.DAO.BookDAO;
+import v002.dao.BookDao;
 import v002.model.Book;
 
-public class MysqlBookDao implements BookDAO {
+public class MysqlBookDao implements BookDao {
 	private static final String ID 		= "id";
 	private static final String NAME 	= "name";
 	private static final String ISDN 	= "isdn";

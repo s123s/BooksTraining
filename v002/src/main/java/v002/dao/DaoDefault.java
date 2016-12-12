@@ -1,4 +1,4 @@
-package v002.DAO;
+package v002.dao;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface DaoDefault<T, K> {
 	}
 
 	/** Read by K */
-	default T read(K o){
+	default T read(K k){
 		throw new RuntimeException("NO "+ this.getClass().getName() +" read() realization");
 	}
 
@@ -20,8 +20,12 @@ public interface DaoDefault<T, K> {
 		throw new RuntimeException("NO "+ this.getClass().getName() +" update() realization");
 	}
 
-	default void delete(T o){
+	default void delete(K k){
 		throw new RuntimeException("NO "+ this.getClass().getName() +" delete() realization");
+	}
+
+	default int markDeleted(K k){
+		throw new RuntimeException("NO "+ this.getClass().getName() +" markDeleted() realization");
 	}
 	
 	default List<T> readAll () {

@@ -42,7 +42,7 @@
 </head>
 <body>
 
-	<FORM method="post" name="theForm" action="BookOperation">
+	<FORM method="post" name="theForm" action="book">
 		<input type="hidden" name="func" id="func">
 
 		<%
@@ -67,12 +67,13 @@
 					<td>${book.id}</td>
 					<td>${book.name}</td>
 					<td>${book.isdn}</td>
-					<td><a href="/BookOperation/edit/${book.id}">EDIT</a></td>
-					<td><a href="/BookOperation/delete/${book.id}">DELETE</a></td>
+
+					<td><a href="<c:url value='/book/edit/${book.id}'/>">EDIT</a></td>
+					<td><a href="<c:url value='/book/delete/${book.id}'/>">DELETE</a></td>
 				</tr>
-				
-        </c:forEach>
-			
+
+			</c:forEach>
+
 		</table>
 		<BR>Операции с книгами <INPUT type="button" value="Новая"
 			onclick="document.theForm.func.value='new_book'; document.theForm.submit();">
