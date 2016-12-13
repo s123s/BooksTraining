@@ -31,10 +31,16 @@ privet!!!!<br/>
     <tr>
         <td>${autor.id}</td>
         <td>${autor.name}</td>
-        <td>edit</td>
-        <td>delete</td>
+        <td><a href="<c:url value='/editAutor/${autor.id}'/>">edit</a></td>
+        <td><a href="<c:url value='/removeAutor/${autor.id}'/>">delete</a></td>
     </tr>
     </c:forEach>
     </table>
+
+<form action="/addAutor" name="add" method="get"> <br>
+    Name Autor <input type="input" name = "name"  value="${book.name}">
+
+    <input type="submit" value="Add"/>
+</form>
 </body>
 </html>

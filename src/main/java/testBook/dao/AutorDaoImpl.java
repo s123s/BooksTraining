@@ -41,7 +41,7 @@ private SessionFactory sessionFactory;
     @Override
     public Autor getAutorById(Long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Autor autor = (Autor) session.load(Autor.class, new Long(id));
+        Autor autor = (Autor) session.get(Autor.class, new Long(id));
         return autor;
     }
 

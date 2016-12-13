@@ -20,6 +20,7 @@ import javax.persistence.*;
         private String name;
     @Column(name = "isdn")
         private String isdn;
+
     @Column(name = "autor_id")
         private int autor_id;
 

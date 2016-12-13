@@ -53,6 +53,18 @@ public class ControllerBook {
         model.addAttribute("listBooks", this.bookService.listBooks());
         return "books";
     }
+    @RequestMapping(value="addAutor", method=RequestMethod.GET)
+    public String addAutor(@ModelAttribute("autor") Autor autor, Model model) {
+        this.autorService.addAutor(autor);
+        model.addAttribute("listAutors", this.autorService.listAutor());
+        return "autors";
+    }
+    @RequestMapping(value="editAutor/{id}")
+    public String editAutor(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("autor", this.autorService.getAutorById(id));
+
+        return "/editAutors";
+    }
     @RequestMapping(value="edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model){
         model.addAttribute("book", this.bookService.getBookById(id));
@@ -65,12 +77,25 @@ public class ControllerBook {
 
         return "redirect:/books";
     }
+    @RequestMapping(value="/updateAutor", method=RequestMethod.POST)
+    public String updateAutor(@ModelAttribute("autor") Autor autor){
+        if(autor.getId() == 0){
+            this.autorService.addAutor(autor);
+        }else {
+            this.autorService.updateAutor(autor);
+        }
+        return "redirect:/autors";
+    }
     @RequestMapping("remove/{id}")
     public String removeBook(@PathVariable("id") Long id){
         this.bookService.removeBook(id);
         return "redirect:/books";
     }
-
+    @RequestMapping("removeAutor/{id}")
+    public String removeAutor(@PathVariable("id") Long id){
+        this.autorService.removeAutor(id);
+        return "redirect:/autors";
+    }
    /* @RequestMapping(value="autor/{autor_id}", method = RequestMethod.GET)
 public String getAutorById(@PathVariable("autor_id") Long id, Model model){
         model.addAttribute("autork",this.autorService.getAutorById(id).getName());
