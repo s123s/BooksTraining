@@ -13,6 +13,7 @@
 <body>
 EditAutors
 <form  action="/updateAutor" name="form" method ="POST">
+    <input type="input" hidden="hidden" name="id" value="${autor.id}">
      AutorName <input type="input" name="name"  value="${autor.name}">
     <input type="submit" value="Edit"/>
 </form>

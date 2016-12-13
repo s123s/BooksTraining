@@ -37,7 +37,7 @@ privet!!!!<br/>
     <form action="/add" name="add" method="get"> <br>
         Name Book <input type="input" name = "name"  value="${book.name}">
         Isdn<input type="input" name = "isdn" value = "${book.isdn}">
-        Autor Book<input type="input" name = "autor" value ="${book.autor_id}">
+        Autor Book<input type="input" name = "autor_id" value ="${book.autor_id}">
         <input type="submit" value="Add"/>
     </form>
 </table>

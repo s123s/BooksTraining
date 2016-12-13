@@ -78,14 +78,15 @@ public class ControllerBook {
         return "redirect:/books";
     }
     @RequestMapping(value="/updateAutor", method=RequestMethod.POST)
-    public String updateAutor(@ModelAttribute("autor") Autor autor){
-        if(autor.getId() == 0){
+    public String updateAutor(@ModelAttribute("autor") Autor autor) {
+        if (autor.getId() == 0) {
             this.autorService.addAutor(autor);
-        }else {
+        } else {
             this.autorService.updateAutor(autor);
         }
-        return "redirect:/autors";
-    }
+            return "redirect:/autors";
+        }
+
     @RequestMapping("remove/{id}")
     public String removeBook(@PathVariable("id") Long id){
         this.bookService.removeBook(id);

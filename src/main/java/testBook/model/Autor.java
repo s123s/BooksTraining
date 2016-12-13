@@ -1,5 +1,7 @@
 package testBook.model;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 
 
@@ -13,7 +15,8 @@ public class Autor {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Lazy(false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
     @Column(name = "name")
     private String name;

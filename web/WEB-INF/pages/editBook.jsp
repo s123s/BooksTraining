@@ -19,7 +19,7 @@ Add or Edit Book
     <li> Id Book <input type="input" name="id" readonly="readonly" value="${book.id}"></li></br>
     <li> Name Book <input type="input" name = "name"  value="${book.name}"></li></br>
     <li> Isdn<input type="input" name = "isdn" value = "${book.isdn}"></li></br>
-    <li> Autor Book<input type="input" name = "autor" value ="${book.autor_id}"></li></br>
+    <li> Autor Book<input type="input" name = "autor_id" value ="${book.autor_id}"></li></br>
     <li><input type="submit" value="Edit"/></li>
     </form>
 </ul>
