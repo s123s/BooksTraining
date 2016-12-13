@@ -40,7 +40,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book getBookById(Long id){
         Session session = sessionFactory.getCurrentSession();
-        Book book = (Book) session.load(Book.class, new Long(id));
+        Book book = (Book) session.get(Book.class, new Long(id));
         return book;
     }
     @Override

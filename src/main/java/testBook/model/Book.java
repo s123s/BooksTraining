@@ -15,7 +15,7 @@ import javax.persistence.*;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+        private long id;
     @Column(name = "name")
         private String name;
     @Column(name = "isdn")
@@ -47,7 +47,7 @@ import javax.persistence.*;
             this.autor_id = autor_id;
         }
 
-        public int getId() { return id;}
+        public long getId() { return id;}
 
         public String getName() {
             return name;

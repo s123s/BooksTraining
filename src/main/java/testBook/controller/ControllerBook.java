@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import testBook.model.Autor;
 import testBook.model.Book;
+import testBook.service.AutorService;
 import testBook.service.BookService;
 
 /**
@@ -15,6 +19,7 @@ import testBook.service.BookService;
 @Controller
 public class ControllerBook {
     private BookService bookService;
+    private AutorService autorService;
 
     @Autowired(required = true)
     @Qualifier(value = "bookService")
@@ -22,12 +27,53 @@ public class ControllerBook {
         this.bookService = bookService;
     }
 
+    @Autowired
+    @Qualifier(value = "autorService")
+    public void setAutorService(AutorService autorService){
+        this.autorService = autorService;
+    }
+
 
     @RequestMapping(value = "books", method = RequestMethod.GET)
     public String listBooks(Model model){
         model.addAttribute("book", new Book());
-        System.out.println(bookService);
         model.addAttribute("listBooks", this.bookService.listBooks());
         return "books";
     }
+
+    @RequestMapping(value = "autors", method = RequestMethod.GET)
+    public String listAutors(Model model){
+        model.addAttribute("autor", new Autor());
+        model.addAttribute("listAutors", this.autorService.listAutor());
+        return "autors";
+    }
+    @RequestMapping(value="add", method=RequestMethod.GET)
+    public String addBook(@ModelAttribute("book") Book book, Model model) {
+        this.bookService.addBook(book);
+        model.addAttribute("listBooks", this.bookService.listBooks());
+        return "books";
+    }
+    @RequestMapping(value="edit/{id}")
+    public String editBook(@PathVariable("id") Long id, Model model){
+        model.addAttribute("book", this.bookService.getBookById(id));
+        System.out.println(this.bookService.getBookById(id));
+        return "/editBook";
+    }
+    @RequestMapping(value="/update", method=RequestMethod.POST)
+    public String updateBook(@ModelAttribute("book") Book book){
+        this.bookService.updateBook(book);
+
+        return "redirect:/books";
+    }
+    @RequestMapping("remove/{id}")
+    public String removeBook(@PathVariable("id") Long id){
+        this.bookService.removeBook(id);
+        return "redirect:/books";
+    }
+
+   /* @RequestMapping(value="autor/{autor_id}", method = RequestMethod.GET)
+public String getAutorById(@PathVariable("autor_id") Long id, Model model){
+        model.addAttribute("autork",this.autorService.getAutorById(id).getName());
+        return "redirect:/books";*/
+
 }

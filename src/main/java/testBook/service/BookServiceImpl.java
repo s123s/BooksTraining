@@ -13,10 +13,14 @@ public class BookServiceImpl implements BookService {
 
     private BookDaoImpl bookDao;
 
-    public void setBookDaoImpl(BookDaoImpl bookDao){
+
+    public void setBookDao(BookDaoImpl bookDao) {
         this.bookDao = bookDao;
     }
 
+    public BookDaoImpl getBookDao() {
+        return bookDao;
+    }
 
     @Override
     @Transactional
@@ -49,13 +53,6 @@ public class BookServiceImpl implements BookService {
         return this.bookDao.listBook();
     }
 
-    public void setBookDao(BookDaoImpl bookDao) {
-        this.bookDao = bookDao;
-    }
-
-    public BookDaoImpl getBookDao() {
-        return bookDao;
-    }
 }
 
 

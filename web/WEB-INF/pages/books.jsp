@@ -19,6 +19,8 @@ privet!!!!<br/>
         <td align="center"><b>Book Name</b></td>
         <td align="center"><b>ISDN</b></td>
         <td align="center"><b>AutorId</b></td>
+        <td align="center"><b>Edit</b></td>
+        <td align="center"><b>Delete</b></td>
     </tr>
     <c:forEach items="${listBooks}" var="book">
         <tr>
@@ -26,8 +28,18 @@ privet!!!!<br/>
             <td>${book.name}</td>
             <td>${book.isdn}</td>
             <td>${book.autor_id}</td>
+
+            <td><a href="<c:url value='/edit/${book.id}'/>">edit</a></td>
+            <td><a href="<c:url value='/remove/${book.id}'/>">delete</a></td>
         </tr>
     </c:forEach>
+
+    <form action="/add" name="add" method="get"> <br>
+        Name Book <input type="input" name = "name"  value="${book.name}">
+        Isdn<input type="input" name = "isdn" value = "${book.isdn}">
+        Autor Book<input type="input" name = "autor" value ="${book.autor_id}">
+        <input type="submit" value="Add"/>
+    </form>
 </table>
 </body>
 </html>
