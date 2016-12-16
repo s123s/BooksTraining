@@ -1,4 +1,4 @@
-package v002.dao.mysqlimp;
+package v003.dao.mysqlimp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,8 +9,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import v002.dao.BookDao;
-import v002.model.Book;
+import v003.dao.BookDao;
+import v003.model.Book;
 
 public class MysqlBookDao implements BookDao {
 	private static final String ID 		= "id";

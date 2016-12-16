@@ -1,4 +1,4 @@
-package v002.dao.hibernate;
+package v003.dao.hibernate;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import v002.dao.BookDao;
-import v002.dao.DaoDefault;
-import v002.model.Book;
+import v003.dao.BookDao;
+import v003.dao.DaoDefault;
+import v003.model.Book;
 
 public class MysqlBookDaoHibernate implements BookDao {
 

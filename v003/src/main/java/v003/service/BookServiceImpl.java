@@ -1,22 +1,11 @@
-package v002.service;
+package v003.service;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import v002.dao.BookDao;
-import v002.dao.DaoDefault;
-import v002.model.Autor;
-import v002.model.Book;
+import v003.dao.BookDao;
+import v003.model.Book;
 
 @Service
 public class BookServiceImpl implements BookService {

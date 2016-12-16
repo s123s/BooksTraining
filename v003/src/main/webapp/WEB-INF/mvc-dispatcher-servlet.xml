@@ -2,6 +2,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -12,7 +13,10 @@
 		http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="v002.controller" />
+<import resource="spring-security.xml"/>
+
+
+	<context:component-scan base-package="v003.controller" />
 
 	<!-- Getting Database properties -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
@@ -43,7 +47,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>v002.model.Book</value>
+				<value>v003.model.Book</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -56,10 +60,10 @@
 	</bean>
 
 	<!--DAO and BookService beans -->
-	<bean id="bookDao" class="v002.dao.hibernate.MysqlBookDaoHibernate">
+	<bean id="bookDao" class="v003.dao.hibernate.MysqlBookDaoHibernate">
 		<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory" />
 	</bean>
-	<bean id="bookService" class="v002.service.BookServiceImpl">
+	<bean id="bookService" class="v003.service.BookServiceImpl">
 		<property name="bookDao" ref="bookDao" />
 	</bean>
 

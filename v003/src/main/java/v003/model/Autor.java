@@ -1,4 +1,4 @@
-package v002.model;
+package v003.model;
 
 public class Autor {
 	public Autor() {

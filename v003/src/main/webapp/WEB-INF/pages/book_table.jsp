@@ -5,7 +5,7 @@
 
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="v002.model.Book"%>
+<%@page import="v003.model.Book"%>
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

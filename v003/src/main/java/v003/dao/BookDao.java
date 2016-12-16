@@ -1,6 +1,6 @@
-package v002.dao;
+package v003.dao;
 
-import v002.model.Book;
+import v003.model.Book;
 
 public interface BookDao extends DaoDefault<Book, Integer>{
 }
