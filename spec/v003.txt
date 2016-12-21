@@ -33,3 +33,4 @@
 1. Добавляем страницу Login + кнопки-ссылки logout где нужно + цепляем Spring-security
 2. Добавляем Spring-validation
 3. Реализуем Frontend на Primefaces
+
