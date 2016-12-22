@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import v003.dao.BookDao;
-import v003.dao.DaoDefault;
 import v003.model.Book;
 
 public class MysqlBookDaoHibernate implements BookDao {
