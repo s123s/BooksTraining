@@ -7,7 +7,8 @@
 	<h2>edit book</h2>
 
 	<FORM method="post" name="theForm" action="../../book/save_edited" accept-charset="UTF-8">
-		
+
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>		
 		id<input type="input" name="id" readonly="readonly" value="${book.id}" /> <BR>
 		name<input type="input" name="name" value="${book.name}" /> <BR>
 		isdn<input type="input" name="isdn" value="${book.isdn}" /> <BR>
