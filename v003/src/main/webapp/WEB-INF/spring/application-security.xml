@@ -9,24 +9,28 @@
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
-	<context:component-scan base-package="v003.security.service" />
+	<context:component-scan base-package="v003.security" />
 
 	<http pattern="/css/**" security="none" />
 
-	<http auto-config="true" use-expressions="false">
-		<intercept-url pattern="/books/**" access="ROLE_USER" />
-		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
-		<intercept-url pattern="login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	<http auto-config="true">
+		<!-- <csrf disabled="true"/> -->
+	
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/books" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
+		<intercept-url pattern="/book/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
+		
+		<intercept-url pattern="/login" access="permitAll" />
 
-		<form-login login-processing-url="/j_spring_security_check" login-page="/signin"
-			authentication-failure-url="/signin-failure" authentication-success-forward-url="/books" default-target-url="/books" />
+		<form-login login-page="/signin" login-processing-url="/login"
+			authentication-failure-url="/signin-failure" authentication-success-forward-url="/books" default-target-url="/" />
 
 	</http>
-
+<!-- 
 	<authentication-manager>
 		<authentication-provider user-service-ref="customUserDetailsService">
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager> -->
 
 	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
 		name="admin" password="ad" authorities="ROLE_USER, ROLE_ADMIN" /> <user name="user" 

@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
 
-	@Autowired
 	private UserManager userManager;
 	
+	@Autowired
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		return userManager.getUser(username);
 	}
-
 	
 }

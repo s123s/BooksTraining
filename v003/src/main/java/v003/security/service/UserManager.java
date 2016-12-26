@@ -21,7 +21,7 @@ public class UserManager {
 		if( !users.containsKey( username ) ){
 			throw new UsernameNotFoundException( username + " not found" );
 		}
-		
-		return users.get( username );		
+		User user = users.get (username);
+		return user;		
 	}
 }
