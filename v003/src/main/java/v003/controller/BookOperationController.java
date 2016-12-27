@@ -30,6 +30,7 @@ public class BookOperationController {
 	  
 	@RequestMapping(value = "/save_edited",  method = RequestMethod.POST)
 	public String saveEditedBook(@ModelAttribute("book") Book book) {
+		System.out.println("saveEditedBook "+book.getName());
 		bookService.update(book);
 
 		return "redirect:/books";

@@ -36,6 +36,7 @@ public class MysqlBookDaoHibernate implements BookDao {
 	@Override
 	@Transactional
 	public void update(Book o) {
+		System.out.println(o.getName());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(o);
 	}
