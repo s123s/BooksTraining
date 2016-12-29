@@ -20,7 +20,8 @@
 		<intercept-url pattern="/books" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
 		<intercept-url pattern="/book/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
 		
-		<intercept-url pattern="/login" access="permitAll" />
+<!-- 		<intercept-url pattern="/login" access="permitAll" /> -->
+		<intercept-url pattern="/*" access="permitAll" />
 
 		<form-login login-page="/signin" login-processing-url="/login"
 			authentication-failure-url="/signin-failure" authentication-success-forward-url="/books" default-target-url="/" />
