@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by yasha on 10.12.2016.
  */
+// TODO replace old fashioned hibernate with Spring Data JPA
 public class AutorDaoImpl implements AutorDao {
 
 private SessionFactory sessionFactory;

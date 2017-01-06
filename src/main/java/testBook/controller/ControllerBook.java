@@ -97,6 +97,15 @@ public class ControllerBook {
         this.autorService.removeAutor(id);
         return "redirect:/autors";
     }
+
+    @RequestMapping(value="/login", method=RequestMethod.GET)
+    public String login() {
+        return "books";
+    }
+    @RequestMapping(value="/login-failure", method=RequestMethod.GET)
+    public String loginFailure() {
+        return "accesDenied";
+    }
    /* @RequestMapping(value="autor/{autor_id}", method = RequestMethod.GET)
 public String getAutorById(@PathVariable("autor_id") Long id, Model model){
         model.addAttribute("autork",this.autorService.getAutorById(id).getName());
