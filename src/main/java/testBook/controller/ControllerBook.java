@@ -34,7 +34,7 @@ public class ControllerBook {
     }
 
 
-    @RequestMapping(value = "books", method = RequestMethod.GET)
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String listBooks(Model model){
         model.addAttribute("book", new Book());
         model.addAttribute("listBooks", this.bookService.listBooks());
@@ -98,11 +98,11 @@ public class ControllerBook {
         return "redirect:/autors";
     }
 
-    @RequestMapping(value="/login", method=RequestMethod.GET)
+    @RequestMapping(value="/login")
     public String login() {
-        return "books";
+        return "login";
     }
-    @RequestMapping(value="/login-failure", method=RequestMethod.GET)
+    @RequestMapping(value="/login-failure")
     public String loginFailure() {
         return "accesDenied";
     }
