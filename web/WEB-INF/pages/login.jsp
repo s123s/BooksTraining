@@ -1,21 +1,18 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ page session="true"%>
-<%--
-  Created by IntelliJ IDEA.
-  User: yasha
-  Date: 07.01.2017
-  Time: 19:16
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page pageEncoding="UTF-8" %>
+
 <html>
 <head>
-    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title Login Page</title>
 </head>
 <body>
-<h5>Войти в систему</h5>
+<h1>Login page</h1>
+<p>Valid users:
+<p>username: <b>user</b>, password: <b>user</b></p>
+<p>username: <b>admin</b>, password: <b>admin</b></p>
+<p>username: <b>guest</b>, password: <b>guest</b></p>
+
 <c:if test="${not empty param.login_error}">
   <span style="color: red; ">
     Your login attempt was not successful, try again.<br/><br/>
@@ -23,19 +20,20 @@
   </span>
 </c:if>
 
-<form name="frm" action="<c:url value='login'/>" method="get">
+<form name="frm" action="/login" method="post">
     <table>
         <tr> <td>User:</td> <td><input type="text" name="username"></td></tr>
 
         <tr><td>Password:</td> <td><input type="password" name="password"></td></tr>
 
-        <tr><td colspan="2"><input name="submit" type="submit"></td></tr>
-        <tr><td colspan="2"><input name="reset" type="reset"></td></tr>
+        <tr><td colspan="2"><input type="submit"></td></tr>
+        <tr><td colspan="2"><input  type="reset"></td></tr>
     </table>
 
-    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
-           value="<c:out value="${_csrf.token}"/>"/>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
 </form>
 
 </body>
+
 </html>

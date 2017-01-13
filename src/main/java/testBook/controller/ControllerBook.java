@@ -34,26 +34,26 @@ public class ControllerBook {
     }
 
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    @RequestMapping(value = "/books")
     public String listBooks(Model model){
         model.addAttribute("book", new Book());
         model.addAttribute("listBooks", this.bookService.listBooks());
         return "books";
     }
 
-    @RequestMapping(value = "autors", method = RequestMethod.GET)
+    @RequestMapping(value = "autors")
     public String listAutors(Model model){
         model.addAttribute("autor", new Autor());
         model.addAttribute("listAutors", this.autorService.listAutor());
         return "autors";
     }
-    @RequestMapping(value="add", method=RequestMethod.GET)
+    @RequestMapping(value="add")
     public String addBook(@ModelAttribute("book") Book book, Model model) {
         this.bookService.addBook(book);
         model.addAttribute("listBooks", this.bookService.listBooks());
         return "books";
     }
-    @RequestMapping(value="addAutor", method=RequestMethod.GET)
+    @RequestMapping(value="addAutor")
     public String addAutor(@ModelAttribute("autor") Autor autor, Model model) {
         this.autorService.addAutor(autor);
         model.addAttribute("listAutors", this.autorService.listAutor());
@@ -71,13 +71,13 @@ public class ControllerBook {
         System.out.println(this.bookService.getBookById(id));
         return "/editBook";
     }
-    @RequestMapping(value="/update", method=RequestMethod.POST)
+    @RequestMapping(value="/update")
     public String updateBook(@ModelAttribute("book") Book book){
         this.bookService.updateBook(book);
 
         return "redirect:/books";
     }
-    @RequestMapping(value="/updateAutor", method=RequestMethod.POST)
+    @RequestMapping(value="/updateAutor")
     public String updateAutor(@ModelAttribute("autor") Autor autor) {
         if (autor.getId() == 0) {
             this.autorService.addAutor(autor);
@@ -102,6 +102,7 @@ public class ControllerBook {
     public String login() {
         return "login";
     }
+
     @RequestMapping(value="/login-failure")
     public String loginFailure() {
         return "accesDenied";
