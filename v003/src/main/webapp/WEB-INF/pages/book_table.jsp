@@ -49,6 +49,7 @@
 			/* 			bookService.initConnection();
 			 */
 		%>
+		<a href="<c:url value='/logout'/>">Logout</a>
 		<h3>Собственно, книги:</h3>
 		<h2>Book List</h2>
 

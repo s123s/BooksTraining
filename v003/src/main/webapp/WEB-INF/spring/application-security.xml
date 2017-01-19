@@ -23,8 +23,12 @@
 <!-- 		<intercept-url pattern="/login" access="permitAll" /> -->
 		<intercept-url pattern="/*" access="permitAll" />
 
-		<form-login login-page="/signin" login-processing-url="/login"
-			authentication-failure-url="/signin-failure" authentication-success-forward-url="/books" default-target-url="/" />
+
+<!-- login-processing-url="/login" -->
+			<!--  authentication-success-forward-url="/books" --> 
+		<form-login login-page="/signin"
+			authentication-failure-url="/signin-failure"
+			default-target-url="/books" />
 
 	</http>
 <!-- 
