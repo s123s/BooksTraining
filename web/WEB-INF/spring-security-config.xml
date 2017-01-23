@@ -12,10 +12,10 @@
 
                 <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
                 <intercept-url pattern="/books/**" access="ROLE_USER" />
-                <!--<intercept-url pattern="/remove**" access="ROLE_ADMIN" />
-                <intercept-url pattern="/update**" access="ROLE_ADMIN" />
-                <intercept-url pattern="/edit**" access="ROLE_ADMIN" />
-                <intercept-url pattern="/add**" access="ROLE_ADMIN" />-->
+                <intercept-url pattern="/remove/{id}" access="ROLE_ADMIN" />
+                <intercept-url pattern="/update" access="ROLE_ADMIN" />
+                <intercept-url pattern="/edit/{id}" access="ROLE_ADMIN" />
+                <intercept-url pattern="/add" access="ROLE_ADMIN" />
                 <intercept-url pattern="/**" access="ROLE_USER" />
 
 
